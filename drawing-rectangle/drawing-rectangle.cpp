@@ -11,7 +11,7 @@
  * we do not do error checks
  * program will crash when we log in incorrectly.
  *
- * example output = 
+ * example output =
 
 file name: a.txt
 x0: 20
