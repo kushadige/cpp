@@ -4,7 +4,8 @@
 #include <string>
 using std::cout;
 using std::string;
-using std::to_string;,
+using std::to_string;
+using std::stoi;
 
 int numberLength(int number);
 int subint(int number, int pos, int length);
@@ -13,7 +14,7 @@ int main(){
     
     int x = 56742387;
 
-    cout << "With string method: " << to_string(x).substr(2,4) << "\n";
+    cout << "With string method: " << stoi(to_string(x).substr(2,4)) << "\n";
     cout << "With our method: " << subint(x,2,4) << "\n"; //output must: 7423
 }
 
