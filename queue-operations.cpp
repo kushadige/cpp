@@ -5,12 +5,27 @@ public:
     int _info;
     Node *_rear = nullptr;
     Node *_front = nullptr;
+    
+    //Constructor and Destructor for memory leak control
+    Node(){
+        cout << "node constructor\n";
+    }
+    ~Node(){
+        cout << "node destructor\n";
+    }
 };
 
 class Queue {
     Node *_head = nullptr;
     Node *_back = nullptr;
 public:
+    Queue(){
+        cout << "queue constructor\n";
+    }
+    ~Queue(){
+        cout << "queue destructor\n";
+    }
+
     void insert(int x){
         
         if(_head == nullptr && _back == nullptr){
@@ -55,9 +70,9 @@ public:
         }
         cout << _head->_info << "\n";
     }
-    friend bool is_empty(Queue q);
+    friend bool is_empty(Queue &q);
 };
-bool is_empty(Queue q){
+bool is_empty(Queue &q){
     if(q._head != nullptr){
         return false;
     }
@@ -65,22 +80,23 @@ bool is_empty(Queue q){
 }
 
 int main(){
-    Queue queue;
-    queue.insert(10);
-    queue.insert(20);
-    queue.insert(30);
-    queue.insert(40);
-    queue.print();
-    queue.remove();
-    queue.print();
-    queue.insert(50);
-    queue.print();
-    
-    while(!is_empty(queue)){
+    {
+        Queue queue;
+        queue.insert(10);
+        queue.insert(20);
+        queue.insert(30);
+        queue.insert(40);
+        queue.print();
         queue.remove();
+        queue.print();
+        queue.insert(50);
+        queue.print();
+        
+        while(!is_empty(queue)){
+            queue.remove();
+        }
+        //control
+        queue.remove();
+        queue.print();
     }
-    //control
-    queue.remove();
-    queue.print();
-    
 }
