@@ -52,7 +52,7 @@ std::string RasyonelSayi::toString(){
 }
 
 void operator>>(std::istream &in, RasyonelSayi &rs){
-    /* --if you want to ask numerator and denominator you can use this code below.
+    /* --if you wanna ask numerator-denominator you can use this code below.
     int x,y;
     
     cout <<"pay: ";
@@ -63,18 +63,18 @@ void operator>>(std::istream &in, RasyonelSayi &rs){
     rs.pay = x;
     rs.payda = y;
     */
-    // --also if you want to get inputs like "3/4" then you can use this--
+    // --also if you wanna take inputs like "3/4" you can use this--
     std::string num; //3/4
 
     in >> num;
 
-    int index = num.find('/'); //the method "find" returns integer or you can use size_t also..
+    int index = num.find('/'); //the method "find" also returns size_t ..
     
     if(index == 0){ //if you used size_t type above you should replace condition to ( index == std::string::npos )
         rs.pay = std::stoi(num);
         rs.payda = 1;
         
-        return; // exits function if the condition is valid
+        return; // exits function
     }
       
     rs.pay = std::stoi( num.substr(0,index) );
